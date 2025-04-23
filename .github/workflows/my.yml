@@ -19,6 +19,17 @@ jobs:
       - name: Compile
         run: ./compile
 
+  build-alpine-arm:
+    runs-on: ubuntu-latest-arm64
+    container:
+      image: alpine:edge
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: ./alpine-depend
+      - name: Compile
+        run: ./compile
+
   build-archlinux:
     runs-on: ubuntu-latest
     container:
@@ -30,8 +41,30 @@ jobs:
       - name: Compile
         run: ./compile
 
+  build-archlinux-arm:
+    runs-on: ubuntu-latest-arm64
+    container:
+      image: archlinux:latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: ./arch-depend
+      - name: Compile
+        run: ./compile
+
   build-debian:
     runs-on: ubuntu-latest
+    container:
+      image: debian:sid
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: ./debian-depend
+      - name: Compile
+        run: ./compile
+
+  build-debian-arm:
+    runs-on: ubuntu-latest-arm64
     container:
       image: debian:sid
     steps:

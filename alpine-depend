@@ -7,45 +7,31 @@ echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposi
 
 # General
 apk add git g++ cmake make pkgconf &&
-
 # Qt base
 apk add qt6-qtbase-dev &&
-
 # coreaction
 apk add qt6-qtsvg-dev &&
-
 # coreinfo
 apk add libmediainfo-dev libzen-dev &&
-
 # corekeyboard
-apk add qt6-qtx11extras-dev libxtst-dev libx11-dev &&
-
+apk add libxtst-dev libx11-dev &&
 # corepdf
 apk add poppler-qt6-dev &&
-
 # coreshot
-# qt6-qtx11extras-dev &&
-
+#  &&
 # corestats
 apk add lm-sensors-dev &&
-
 # corestuff
-apk add qt6-qtx11extras-dev libxcomposite-dev kglobalaccel-dev libxi-dev xcb-util-wm-dev xcb-util-dev libx11-dev &&
-
+apk add libxcomposite-dev kglobalaccel-dev libxi-dev xcb-util-wm-dev &&
 # coreterminal
 apk add qtermwidget-dev@testing qt6-qtserialport-dev &&
-
 # coretime
 apk add qt6-qtmultimedia-dev &&
-
 # coretoppings
-apk add qt6-qtx11extras-dev qt6-qtconnectivity-dev libxcomposite-dev xcb-util-dev libxrender-dev xcb-util-wm-dev libdbusmenu-qt-dev libxdamage-dev &&
-
+apk add qt6-qtconnectivity-dev xcb-util-dev libxrender-dev xcb-util-wm-dev libdbusmenu-lxqt-dev libxdamage-dev &&
 # libarchive-qt
 apk add xz-dev libarchive-dev zlib-dev bzip2-dev meson &&
-
 # libcprime
 apk add libnotify &&
-
 # libcsys
 apk add udisks2

@@ -1,4 +1,4 @@
-# C-Suite Master repo [![pipeline status](https://gitlab.com/cubocore/coreapps-edge/badges/master/pipeline.svg)](https://gitlab.com/cubocore/coreapps-edge/-/commits/master)
+# C-Suite Master repo [![Build C-Suite](https://github.com/rahmanshaber/c-suite-build-test/actions/workflows/my.yml/badge.svg)](https://github.com/rahmanshaber/c-suite-build-test/actions/workflows/my.yml)
 
 This contains all the CoreApps repo in latest git commit.
 

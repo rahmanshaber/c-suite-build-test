@@ -16,7 +16,7 @@ apk add libmediainfo-dev libzen-dev &&
 # corekeyboard
 apk add libxtst-dev libx11-dev &&
 # corepdf
-apk add poppler-qt6-dev &&
+apk add poppler-qt6 &&
 # coreshot
 #  &&
 # corestats

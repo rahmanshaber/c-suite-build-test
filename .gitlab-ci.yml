@@ -1,0 +1,24 @@
+alpine_amd64:
+    stage: build
+    image: alpine:edge
+    before_script:
+        - ./alpine-depend
+    script:
+        - ./compile
+
+archlinux_amd64:
+    stage: build
+    image: archlinux:latest
+    before_script:
+        - ./arch-depend
+    script:
+        - ./compile
+
+
+debian_sid_amd64:
+    stage: build
+    image: debian:sid
+    before_script:
+        - ./debian-depend
+    script:
+        - ./compile

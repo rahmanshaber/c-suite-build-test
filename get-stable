@@ -1,0 +1,148 @@
+#!/usr/bin/python3
+# -*- encoding: utf-8 -*-
+
+"""
+get-stable - Download the latest stable release of CoreApps
+
+###================== Program Info ==================###
+    Program Name : get-stable
+    Version : 1.0.0
+    Platform : Linux/Unix
+    Requriements :
+        Must :
+            modules os, sys, tarfile
+    Python Version : Python 3.4 or higher
+    Author : Marcus Britanicus
+    Email : marcusbritanicus@gmail.com
+    License : Public Domain
+###==================================================###
+"""
+
+### =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= #
+
+	#
+	# This script is in public domain; do whatever you want to do with it.
+	#
+
+	#
+	# This program is distributed in the hope that it will be useful,
+	# but WITHOUT ANY WARRANTY; without even the implied warranty of
+	# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+	#
+
+### =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= #
+
+import os, sys, tarfile
+
+def write( data ) :
+	"""write() -> None
+
+	Write data to STDOUT
+
+	@return None
+	"""
+
+	sys.stdout.write( data )
+	sys.stdout.flush()
+
+# Structure: https://gitlab.com/cubocore/<repo>/-/archive/<release>/<repo>-<release>.tar.bz2
+skel = "https://gitlab.com/cubocore/{0}/-/archive/{1}/{0}-{1}.tar.bz2"
+
+# Latest release tag: NEEDS TO BE UPDATED EVERYTIME IN THE REPO
+write( "Checking the latest release..." )
+os.system( "wget https://gitlab.com/cubocore/coreapps-edge/raw/master/LATEST -O /tmp/coreapps-LATEST >/dev/null 2>&1" )
+release = open( "/tmp/coreapps-LATEST" ).read().strip()
+write( "[DONE]\n" )
+
+if __name__ == '__main__' :
+
+	# Check if @/path/to/cubocore/repos exists
+	if not os.path.exists( "coreapps-" + release ):
+		os.mkdir( "coreapps-" + release )
+
+	else:
+		write( "The release %s already exists. " % release )
+		write( "Do you want to delete the existing files and continue (yes|no)? " )
+		response = input()
+		if ( response.lower() in "no" ):
+			write( "Aorting...!\n" )
+			sys.exit( 1 )
+
+	os.chdir( "coreapps-" + release )
+
+	coreapps = [
+		'coretoppings',
+		'coreaction',
+		'corearchiver',
+		'corefm',
+		'coregarage',
+		'corehunt',
+		'coreimage',
+		'coreinfo',
+		'corekeyboard',
+		'corepad',
+		'corepaint',
+		'corepdf',
+		'corepins',
+		'corerenamer',
+		'coreshot',
+		'corestats',
+		'corestuff',
+		'coreterminal',
+		'coretime',
+		'coreuniverse',
+		'corevault',
+		'libcprime',
+		'libcsys',
+	]
+
+	for coreapp in coreapps:
+		write( "Downloading %s... " % coreapp )
+		x = os.system( "wget " + skel.format( coreapp, release ) + " >/dev/null 2>&1" )
+		if x:
+			write( "[ERROR]\n" )
+
+		else:
+			write( "[DONE]\n" )
+			write( "Extracting %s... " % coreapp )
+			tar = tarfile.open( coreapp + '-' + release + ".tar.bz2" )
+			tar.extractall()
+			tar.close()
+			os.rename( coreapp + '-' + release, coreapp )
+			os.unlink( coreapp + '-' + release + ".tar.bz2" )
+			write( "[DONE]\n" )
+
+	else:
+		write( "Generating coreapps-%s.pro file" % release )
+		f = open( "coreapps-%s.pro" % release, "w" )
+		f.write( "TEMPLATE = subdirs\n\n" )
+		f.write( "SUBDIRS += " )
+		for coreapp in coreapps:
+			f.write( coreapp + " " )
+
+		else:
+			f.write( "\n\n" )
+
+		for coreapp in coreapps:
+			if coreapp.startswith( "libc" ):
+				continue
+
+			f.write( coreapp + ".depends = libcprime libcsys\n" )
+
+		else:
+			f.close()
+
+		print( "" )
+		print( "" )
+
+		print( "# ==================================================================== #" )
+		print( "# " + "Welcome to CoreApps Application Suite!".center( 68 ) + " #" )
+		print( "# " + ( "Release %s" % release) .center( 68 ) + " #" )
+		print( "# ==================================================================== #" )
+
+		print( "" )
+		print( "" )
+
+		print( "To compile all the applications, type:" )
+		print( "    $ qmake -qt5" )
+		print( "    $ make -kj$(nproc)" )

@@ -1,0 +1,14 @@
+lib*.so*
+.qmake.stash
+Makefile
+*.pro.user
+*.txt.user
+update
+build
+pkgconfig
+libcsys.prl
+makedebs.py
+*-devel
+corefm-redesign
+.build
+build

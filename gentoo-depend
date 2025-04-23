@@ -1,0 +1,81 @@
+#!/bin/bash
+
+
+if type nproc >/dev/null
+then
+    cores="$(nproc)"
+else
+    cores=1
+fi
+
+emegre_opts=(
+    --jobs="${cores}"
+    --noreplace
+    --oneshot
+    --quiet
+)
+
+requirements=(
+    # General
+    app-admin/sudo app-misc/ca-certificates dev-util/cmake dev-vcs/git
+
+    # Qt
+    dev-qt/qtconcurrent dev-qt/qtcore dev-qt/qtdbus dev-qt/qtgui
+    dev-qt/qtnetwork dev-qt/qtopengl dev-qt/qtsql dev-qt/qttest
+    dev-qt/qtwidgets dev-qt/qtxml
+
+    # CoreAction
+    dev-qt/qtsvg
+
+    # CoreInfo
+    media-libs/libmediainfo media-libs/libzen sys-libs/zlib
+
+    # CoreKeyboard
+    dev-qt/qtx11extras x11-libs/libX11 x11-libs/libXtst
+
+    # CorePDF
+    app-text/poppler
+
+    # CoreShot
+    # dev-qt/qtx11extras
+
+    # CoreStats
+    sys-apps/lm-sensors
+
+    # CoreStuff
+    kde-frameworks/kglobalaccel x11-libs/libXcomposite
+
+    # CoreTerminal
+    dev-qt/qtserialport x11-libs/qtermwidget
+
+    # CoreTime
+    dev-qt/qtmultimedia
+
+    # CoreToppings
+    dev-libs/libdbusmenu-qt dev-qt/qtbluetooth dev-qt/qtlocation
+    media-sound/pulseaudio
+
+    #CoreVault
+    sys-fs/cryfs
+
+    # LibArchive-Qt
+    app-arch/bzip2 app-arch/libarchive app-arch/lrzip app-arch/lz4 app-arch/lzip
+    app-arch/lzop app-arch/xz-utils
+
+    # LibCPrime
+    x11-libs/libnotify
+
+    # LibCSys
+    sys-fs/udisks
+)
+
+
+# Debug
+echo "Emegre options: ${emegre_opts[*]}"
+echo "Requirements:   ${requirements[*]}"
+
+# Sync "gentoo" repository to update ebuild scripts
+emaint sync -r gentoo
+
+# Install the dependencies
+emerge "${emegre_opts[@]}" "${requirements[@]}"

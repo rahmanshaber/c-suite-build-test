@@ -1,0 +1,272 @@
+#!/bin/sh
+
+
+git clone https://gitlab.com/marcusbritanicus/libarchive-qt.git
+git clone https://gitlab.com/extraqt/qdocumentview.git
+
+git clone https://gitlab.com/cubocore/libcprime.git
+git clone https://gitlab.com/cubocore/libcsys.git
+
+git clone https://gitlab.com/cubocore/coreapps/coreaction.git
+git clone https://gitlab.com/cubocore/coreapps/corearchiver.git
+git clone https://gitlab.com/cubocore/coreapps/corefm.git
+git clone https://gitlab.com/cubocore/coreapps/coregarage.git
+git clone https://gitlab.com/cubocore/coreapps/corehunt.git
+git clone https://gitlab.com/cubocore/coreapps/coreimage.git
+git clone https://gitlab.com/cubocore/coreapps/coreinfo.git
+git clone https://gitlab.com/cubocore/coreapps/corekeyboard.git
+git clone https://gitlab.com/cubocore/coreapps/corepad.git
+git clone https://gitlab.com/cubocore/coreapps/corepaint.git
+git clone https://gitlab.com/cubocore/coreapps/corepdf.git
+git clone https://gitlab.com/cubocore/coreapps/corepins.git
+git clone https://gitlab.com/cubocore/coreapps/corerenamer.git
+git clone https://gitlab.com/cubocore/coreapps/coreshot.git
+git clone https://gitlab.com/cubocore/coreapps/corestats.git
+git clone https://gitlab.com/cubocore/coreapps/corestuff.git
+git clone https://gitlab.com/cubocore/coreapps/coreterminal.git
+git clone https://gitlab.com/cubocore/coreapps/coretime.git
+git clone https://gitlab.com/cubocore/coreapps/coretoppings.git
+git clone https://gitlab.com/cubocore/coreapps/coreuniverse.git
+
+echo "###############################################################"
+
+
+# Build libarchive-qt
+cd libarchive-qt
+meson .build --prefix=/usr --buildtype=release -Duse_qt_version=qt6
+ninja -C .build -k 0 -j $(nproc)
+ninja -C .build install
+cd ../
+
+echo "###############################################################"
+
+# Build qdocumentview
+cd qdocumentview
+#meson .build --prefix=/usr --buildtype=release
+#ninja -C .build -k 0 -j $(nproc)
+#ninja -C .build install
+meson setup .build6 --prefix=/usr --buildtype=release -Duse_qt_version=qt6
+ninja -C .build6 -j $(nproc) -k
+ninja -C .build6 install
+cd ../
+
+echo "###############################################################"
+
+# Build libcsys
+cd libcsys
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build libcprime
+cd libcprime
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build coreaction
+cd coreaction
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build corearchiver
+cd corearchiver
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build corefm
+cd corefm
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build coregarage
+cd coregarage
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+# Build corehunt
+cd corehunt
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build coreimage
+cd coreimage
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build coreinfo
+cd coreinfo
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build corekeyboard
+cd corekeyboard
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build corepad
+cd corepad
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build corepaint
+cd corepaint
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build corepdf
+cd corepdf
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build corepins
+cd corepins
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build corerenamer
+cd corerenamer
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build coreshot
+cd coreshot
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build corestats
+cd corestats
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build corestuff
+cd corestuff
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build coreterminal
+cd coreterminal
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build coretime
+cd coretime
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build coretoppings
+cd coretoppings
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+
+
+# Build coreuniverse
+cd coreuniverse
+cmake -GNinja ./CMakeLists.txt
+ninja -k 0 -j $(nproc) 
+ninja install
+cd ../
+
+echo "###############################################################"
+

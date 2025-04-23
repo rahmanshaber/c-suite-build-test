@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# Debian
+# Shell script for --no-install-recommends installing dependency list for CuboCore/CoreApps (https://gitlab.com/cubocore/coreapps)
+
+apt-get update -yq
+
+# General
+apt-get --no-install-recommends install -y g++ git ca-certificates make cmake ninja-build extra-cmake-modules
+
+# Qt base
+apt-get --no-install-recommends install -y qt6-qmake qtbase6-dev qtbase6-dev-tools qtbase6-private-dev qtchooser
+
+# CoreAction
+apt-get --no-install-recommends install -y libqt6svg6-dev
+
+# CoreInfo
+apt-get --no-install-recommends install -y libmediainfo-dev libzen-dev zlib1g-dev
+
+# CoreKeyBoard
+apt-get --no-install-recommends install -y libqt6x11extras6-dev libxtst-dev libx11-dev
+
+# CorePDF
+apt-get --no-install-recommends install -y libpoppler-qt6-dev
+
+# CoreShot
+apt-get --no-install-recommends install -y libqt6x11extras6-dev
+
+# CoreStats
+apt-get --no-install-recommends install -y libsensors4-dev
+
+# CoreStuff
+apt-get --no-install-recommends install -y libxcb-util0-dev libxcb-ewmh-dev libxcb-icccm4-dev libx11-dev libxi-dev libxcomposite-dev libkf6globalaccel-dev libkf6globalaccel-bin
+
+# CoreTerminal
+apt-get --no-install-recommends install -y libqtermwidget6-0-dev libqt6serialport6-dev libutf8proc-dev
+
+# CoreTime
+ apt-get --no-install-recommends install -y qtmultimedia6-dev
+
+# CoreToppings
+apt-get --no-install-recommends install -y qtmultimedia6-dev qtlocation6-dev libqt6x11extras6-dev qtconnectivity6-dev libpulse-dev libxrender-dev libxcb-util0-dev libxcb-damage0-dev libxdamage-dev libdbusmenu-qt6-dev
+
+# LibArchive-Qt
+apt-get --no-install-recommends install -y libarchive-dev liblzma-dev libbz2-dev zlib1g-dev liblz-dev lzop meson ninja-build
+
+# LibCPrime
+# apt-get --no-install-recommends install -y
+
+# LibCSys
+apt-get --no-install-recommends install -y udisks2

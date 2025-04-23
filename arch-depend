@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Update the system and repo list
+pacman -Syu --noconfirm
+# General
+pacman -S --noconfirm gcc git make ca-certificates pkgconf qt6-base cmake ninja
+# CoreAction
+pacman -S --noconfirm qt6-svg
+# CoreInfo
+pacman -S --noconfirm libzen zlib libmediainfo
+# CoreKeyboard
+pacman -S --noconfirm libxtst libx11
+# CorePDF
+pacman -S --noconfirm poppler-qt6
+# CoreShot
+#pacman -S --noconfirm qt6-x11extras
+# CoreStats
+pacman -S --noconfirm lm_sensors
+# CoreStuff
+pacman -S --noconfirm xcb-util-wm libxi libxcomposite kglobalaccel #xcb-util libx11
+# CoreTerminal
+pacman -S --noconfirm qtermwidget qt6-serialport
+# CoreTime
+pacman -S --noconfirm qt6-multimedia
+# CoreToppings
+pacman -S --noconfirm qt6-connectivity libpulse libxrender libxcb xcb-util libdbusmenu-lxqt #qt6-multimedia
+#CoreVault
+pacman -S --noconfirm cryfs
+# LibArchive-Qt
+pacman -S --noconfirm libarchive xz bzip2 lz4 lzop meson #zlib
+# LibCPrime
+#pacman -S --noconfirm qt6-connectivity
+# LibCSys
+pacman -S --noconfirm udisks2
+# QDocumentView
+pacman -S --noconfirm qt6-tools qt6-declarative qt6-svg poppler-qt6 djvulibre cups # qt6-base meson extra-cmake-modules 
